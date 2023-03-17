@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="2D-survivor-course"
+run/main_scene="res://scenes/main/main.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
 
