@@ -1,8 +1,76 @@
-[gd_scene load_steps=2 format=3 uid="uid://orwk7eyottsy"]
+[gd_scene load_steps=5 format=3 uid="uid://orwk7eyottsy"]
 
 [ext_resource type="Texture2D" uid="uid://bwvbxdagbm3fd" path="res://scenes/ability/sword_ability/sword.png" id="1_osxjj"]
 
+[sub_resource type="Animation" id="Animation_34ynl"]
+resource_name = "swing"
+length = 0.75
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1.7411, 1),
+"update": 0,
+"values": [3.48787e-16, -0.174533, 3.14159, 3.48787e-16]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.35, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 5.27803, 1),
+"update": 0,
+"values": [Vector2(2.08165e-12, 2.08165e-12), Vector2(1.25, 1.25), Vector2(1, 1), Vector2(2, 2), Vector2(1, 1), Vector2(2.08165e-12, 2.08165e-12)]
+}
+
+[sub_resource type="Animation" id="Animation_nq6l8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7yucl"]
+_data = {
+"RESET": SubResource("Animation_nq6l8"),
+"swing": SubResource("Animation_34ynl")
+}
+
 [node name="SwordAbility" type="Node2D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "swing"
+libraries = {
+"": SubResource("AnimationLibrary_7yucl")
+}
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_osxjj")
