@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=6 format=3 uid="uid://d20rfxp85rupu"]
 
 [ext_resource type="Script" path="res://scenes/game_object/basic_enemy/basic_enemy.gd" id="1_tw24d"]
+[ext_resource type="PackedScene" uid="uid://bn84306o0wkgh" path="res://scenes/component/health_component.tscn" id="2_1jy0h"]
 [ext_resource type="Texture2D" uid="uid://b2pnburqp4nhb" path="res://scenes/game_object/basic_enemy/basic_enemy.png" id="2_b1arm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f8yml"]
@@ -14,6 +15,8 @@ collision_layer = 8
 collision_mask = 9
 motion_mode = 1
 script = ExtResource("1_tw24d")
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_1jy0h")]
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
