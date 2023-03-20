@@ -9,4 +9,3 @@ func _ready():
 
 func increase_experience(val: float):
 	current_experience += val
-	print(current_experience)
