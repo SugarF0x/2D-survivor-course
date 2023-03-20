@@ -10,7 +10,4 @@ func _ready():
 
 
 func on_experience_updated(current: float, target: float):
-	print(current)
-	print(target)
-	print('-----')
 	progress_bar.value = current / target
