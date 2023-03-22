@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bn84306o0wkgh" path="res://scenes/component/health_component.tscn" id="2_wu42c"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p4gny"]
-bg_color = Color(0.329412, 0.329412, 0.329412, 0.501961)
+bg_color = Color(0.247059, 0.14902, 0.192157, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tgtab"]
 bg_color = Color(0.768627, 0, 0.192157, 1)
