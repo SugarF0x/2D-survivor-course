@@ -10,6 +10,11 @@ bg_color = Color(0.247059, 0.14902, 0.192157, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tgtab"]
 bg_color = Color(0.768627, 0, 0.192157, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.631373, 0.631373, 0.631373, 0)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_be53i"]
 radius = 16.0
@@ -44,9 +49,9 @@ offset = Vector2(2.08165e-12, -8)
 [node name="HealthBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 4)
-offset_left = -17.0
+offset_left = -16.0
 offset_top = 1.0
-offset_right = 15.0
+offset_right = 16.0
 offset_bottom = 5.0
 pivot_offset = Vector2(16, 2)
 theme_override_styles/background = SubResource("StyleBoxFlat_p4gny")
