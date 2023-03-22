@@ -6,6 +6,7 @@ const ACCELERATION_SMOOTHING = 25
 @onready var collision_area = %CollisionArea2D as Area2D
 @onready var damage_interval_timer = %DamageIntervalTimer as Timer
 @onready var health_component = %HealthComponent as HealthComponent
+@onready var health_bar = %HealthBar as ProgressBar
 
 var colliding_body_number = 0
 
@@ -13,6 +14,9 @@ func _ready():
 	collision_area.body_entered.connect(on_body_entered)
 	collision_area.body_exited.connect(on_body_exited)
 	damage_interval_timer.timeout.connect(process_incoming_damage)
+	health_component.health_changed.connect(on_health_changed)
+	
+	update_health_display()
 
 
 func _process(delta):
@@ -22,6 +26,10 @@ func _process(delta):
 	velocity = velocity.lerp(target_velocity, 1 - exp(-delta * ACCELERATION_SMOOTHING))
 	
 	move_and_slide()
+
+
+func update_health_display():
+	health_bar.value = health_component.get_health_percent()
 
 
 func get_movement_vector():
@@ -45,3 +53,7 @@ func on_body_entered(body: Node2D):
 
 func on_body_exited(body: Node2D):
 	colliding_body_number -= 1
+
+
+func on_health_changed(health: int):
+	update_health_display()

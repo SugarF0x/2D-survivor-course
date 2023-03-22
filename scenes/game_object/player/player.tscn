@@ -1,9 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://dctuvs2iige5u"]
+[gd_scene load_steps=10 format=3 uid="uid://dctuvs2iige5u"]
 
 [ext_resource type="Texture2D" uid="uid://bsouiyk8ngs1k" path="res://scenes/game_object/player/player.png" id="1_80v7p"]
 [ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_bcfxh"]
 [ext_resource type="PackedScene" uid="uid://qp1lj1qr5ys5" path="res://scenes/ability/sword_ability_controller/sword_ability_controller.tscn" id="2_flk71"]
 [ext_resource type="PackedScene" uid="uid://bn84306o0wkgh" path="res://scenes/component/health_component.tscn" id="2_wu42c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p4gny"]
+bg_color = Color(0.329412, 0.329412, 0.329412, 0.501961)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tgtab"]
+bg_color = Color(0.768627, 0, 0.192157, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_be53i"]
 radius = 16.0
@@ -35,7 +41,22 @@ one_shot = true
 texture = ExtResource("1_80v7p")
 offset = Vector2(2.08165e-12, -8)
 
+[node name="HealthBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 4)
+offset_left = -17.0
+offset_top = 1.0
+offset_right = 15.0
+offset_bottom = 5.0
+pivot_offset = Vector2(16, 2)
+theme_override_styles/background = SubResource("StyleBoxFlat_p4gny")
+theme_override_styles/fill = SubResource("StyleBoxFlat_tgtab")
+max_value = 1.0
+value = 0.5
+show_percentage = false
+
 [node name="PickupArea2D" type="Area2D" parent="."]
+visible = false
 collision_layer = 16
 collision_mask = 0
 
@@ -45,6 +66,7 @@ shape = SubResource("CircleShape2D_be53i")
 
 [node name="CollisionArea2D" type="Area2D" parent="."]
 unique_name_in_owner = true
+visible = false
 collision_layer = 0
 collision_mask = 8
 
@@ -53,5 +75,6 @@ position = Vector2(2.08165e-12, -6)
 shape = SubResource("CircleShape2D_fgxqo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(2.08165e-12, -5)
 shape = SubResource("CircleShape2D_2n4us")
