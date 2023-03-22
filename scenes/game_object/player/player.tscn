@@ -1,11 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://dctuvs2iige5u"]
+[gd_scene load_steps=8 format=3 uid="uid://dctuvs2iige5u"]
 
 [ext_resource type="Texture2D" uid="uid://bsouiyk8ngs1k" path="res://scenes/game_object/player/player.png" id="1_80v7p"]
 [ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_bcfxh"]
 [ext_resource type="PackedScene" uid="uid://qp1lj1qr5ys5" path="res://scenes/ability/sword_ability_controller/sword_ability_controller.tscn" id="2_flk71"]
+[ext_resource type="PackedScene" uid="uid://bn84306o0wkgh" path="res://scenes/component/health_component.tscn" id="2_wu42c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_be53i"]
 radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fgxqo"]
+radius = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2n4us"]
 radius = 5.0
@@ -15,21 +19,38 @@ collision_layer = 0
 motion_mode = 1
 script = ExtResource("1_bcfxh")
 
+[node name="HealthComponent" parent="." instance=ExtResource("2_wu42c")]
+unique_name_in_owner = true
+
 [node name="AbilityManager" type="Node" parent="."]
 
 [node name="SwordAbilityController" parent="AbilityManager" instance=ExtResource("2_flk71")]
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 16
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(2.08165e-12, -5)
-shape = SubResource("CircleShape2D_be53i")
+[node name="DamageIntervalTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.5
+one_shot = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_80v7p")
 offset = Vector2(2.08165e-12, -8)
+
+[node name="PickupArea2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea2D"]
+position = Vector2(2.08165e-12, -5)
+shape = SubResource("CircleShape2D_be53i")
+
+[node name="CollisionArea2D" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea2D"]
+position = Vector2(2.08165e-12, -6)
+shape = SubResource("CircleShape2D_fgxqo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2.08165e-12, -5)
