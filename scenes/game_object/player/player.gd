@@ -43,7 +43,6 @@ func process_incoming_damage():
 	if not damage_interval_timer.is_stopped(): return
 	damage_interval_timer.start()
 	health_component.apply_damage(1)
-	print(health_component.current_health)
 
 
 func on_body_entered(body: Node2D):
