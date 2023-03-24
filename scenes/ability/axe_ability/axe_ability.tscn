@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://hqasfihmqppr"]
+
+[ext_resource type="Script" path="res://scenes/ability/axe_ability/axe_ability.gd" id="1_lcr8a"]
+[ext_resource type="Texture2D" uid="uid://bvq8bg5lg8rvw" path="res://scenes/ability/axe_ability/axe.png" id="1_n0s5u"]
+
+[node name="AxeAbility" type="Node2D"]
+script = ExtResource("1_lcr8a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_n0s5u")
