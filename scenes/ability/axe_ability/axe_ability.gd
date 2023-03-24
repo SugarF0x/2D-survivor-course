@@ -8,7 +8,7 @@ var base_rotation = Vector2.RIGHT
 
 
 func _ready():
-	base_rotation = base_rotation.rotated(deg_to_rad(randf_range(0, 360)))
+	base_rotation = base_rotation.rotated(randf_range(0, TAU))
 	
 	var tween = create_tween()
 	tween.tween_method(tween_method, 0.0, 2.0, 3)
