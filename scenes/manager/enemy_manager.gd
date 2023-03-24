@@ -35,5 +35,5 @@ func on_timer_timeout():
 
 
 func on_arena_difficulty_increased(arena_difficulty: int):
-	timer.wait_time = max(base_spawn_time - (.1 / 12) * arena_difficulty, float(base_spawn_time) / 2)
+	timer.wait_time = max(base_spawn_time - (.1 / 12) * arena_difficulty, .3)
 	print(timer.wait_time)
