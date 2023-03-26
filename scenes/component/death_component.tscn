@@ -1,6 +1,22 @@
-[gd_scene load_steps=8 format=3 uid="uid://lv11xxug15oi"]
+[gd_scene load_steps=9 format=3 uid="uid://lv11xxug15oi"]
 
+[ext_resource type="Script" path="res://scenes/component/death_component.gd" id="1_7jk2r"]
 [ext_resource type="Texture2D" uid="uid://b2pnburqp4nhb" path="res://scenes/game_object/basic_enemy/basic_enemy.png" id="1_eu5k4"]
+
+[sub_resource type="Animation" id="Animation_lyrbw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_kfw4a"]
 resource_name = "default"
@@ -32,21 +48,6 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_lyrbw"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("GPUParticles2D:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mx0rc"]
 _data = {
 "RESET": SubResource("Animation_lyrbw"),
@@ -74,9 +75,9 @@ orbit_velocity_max = 0.0
 scale_curve = SubResource("CurveTexture_j34h5")
 
 [node name="DeathComponent" type="Node2D"]
+script = ExtResource("1_7jk2r")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "default"
 libraries = {
 "": SubResource("AnimationLibrary_mx0rc")
 }
