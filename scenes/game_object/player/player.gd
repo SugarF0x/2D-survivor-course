@@ -8,6 +8,7 @@ const ACCELERATION_SMOOTHING = 25
 @onready var health_component = %HealthComponent as HealthComponent
 @onready var health_bar = %HealthBar as ProgressBar
 @onready var abilities_node = %Abilities as Node
+@onready var visuals_node = %Visuals as Node2D
 
 @onready var animation_player = $AnimationPlayer as AnimationPlayer
 
@@ -32,8 +33,10 @@ func _process(delta):
 	
 	move_and_slide()
 	
-	if movement_vector != Vector2.ZERO: animation_player.play('walk')
-	else: animation_player.play('RESET')
+	if movement_vector == Vector2.ZERO: animation_player.play('RESET')
+	else: 
+		animation_player.play('walk')
+		visuals_node.scale.x = -1 if movement_vector.x < 0 else 1
 
 
 func update_health_display():
