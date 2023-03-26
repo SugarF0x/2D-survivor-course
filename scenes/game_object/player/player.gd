@@ -36,7 +36,9 @@ func _process(delta):
 	if movement_vector == Vector2.ZERO: animation_player.play('RESET')
 	else: 
 		animation_player.play('walk')
-		visuals_node.scale.x = -1 if movement_vector.x < 0 else 1
+		
+		var x_movement_vector_sign = sign(movement_vector.x)
+		if x_movement_vector_sign != 0: visuals_node.scale.x = x_movement_vector_sign
 
 
 func update_health_display():
