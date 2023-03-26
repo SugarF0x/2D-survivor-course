@@ -9,6 +9,8 @@ const ACCELERATION_SMOOTHING = 25
 @onready var health_bar = %HealthBar as ProgressBar
 @onready var abilities_node = %Abilities as Node
 
+@onready var animation_player = $AnimationPlayer as AnimationPlayer
+
 var colliding_body_number = 0
 
 func _ready():
@@ -22,12 +24,16 @@ func _ready():
 
 
 func _process(delta):
-	var direction = get_movement_vector().normalized()
+	var movement_vector = get_movement_vector()
+	var direction = movement_vector.normalized()
 	var target_velocity = direction * MAX_SPEED
 	
 	velocity = velocity.lerp(target_velocity, 1 - exp(-delta * ACCELERATION_SMOOTHING))
 	
 	move_and_slide()
+	
+	if movement_vector != Vector2.ZERO: animation_player.play('walk')
+	else: animation_player.play('RESET')
 
 
 func update_health_display():
