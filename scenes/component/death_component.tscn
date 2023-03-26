@@ -20,7 +20,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_kfw4a"]
 resource_name = "default"
-length = 0.65
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -40,7 +40,7 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.7),
+"times": PackedFloat32Array(0.5),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -65,11 +65,11 @@ curve = SubResource("Curve_ubynd")
 particle_flag_disable_z = true
 direction = Vector3(2.08165e-12, -1, 2.08165e-12)
 spread = 30.0
-gravity = Vector3(2.08165e-12, 400, 2.08165e-12)
-initial_velocity_min = 125.0
-initial_velocity_max = 200.0
-angular_velocity_min = -720.0
-angular_velocity_max = 720.0
+gravity = Vector3(2.08165e-12, 800, 2.08165e-12)
+initial_velocity_min = 175.0
+initial_velocity_max = 250.0
+angular_velocity_min = -1440.0
+angular_velocity_max = 1440.0
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
 scale_curve = SubResource("CurveTexture_j34h5")
@@ -87,7 +87,7 @@ emitting = false
 amount = 1
 process_material = SubResource("ParticleProcessMaterial_n3qdp")
 texture = ExtResource("1_eu5k4")
-lifetime = 0.65
+lifetime = 0.5
 one_shot = true
 fixed_fps = 0
 interpolate = false
