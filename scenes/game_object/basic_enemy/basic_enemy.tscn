@@ -115,6 +115,7 @@ libraries = {
 health_component = NodePath("../HealthComponent")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_1jy0h")]
+unique_name_in_owner = true
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("4_ynfcm")]
 health_component = NodePath("../HealthComponent")

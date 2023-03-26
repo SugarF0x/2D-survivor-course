@@ -32,7 +32,10 @@ func _process(delta):
 	velocity = velocity.lerp(target_velocity, 1 - exp(-delta * ACCELERATION_SMOOTHING))
 	
 	move_and_slide()
-	
+	flip_visuals_node_towards_movement(movement_vector)
+
+
+func flip_visuals_node_towards_movement(movement_vector: Vector2):
 	if movement_vector == Vector2.ZERO: animation_player.play('RESET')
 	else: 
 		animation_player.play('walk')
