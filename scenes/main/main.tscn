@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://jaihcf7ksvy8" path="res://scenes/ui/experience_bar.tscn" id="2_vrxyb"]
 [ext_resource type="PackedScene" uid="uid://5smnslfqsvno" path="res://scenes/manager/arena_time_manager.tscn" id="2_xtjgs"]
 [ext_resource type="PackedScene" uid="uid://kynofee1jb84" path="res://scenes/manager/experience_manager.tscn" id="3_smvm4"]
-[ext_resource type="PackedScene" uid="uid://b1ku5wxfe0hhy" path="res://scenes/manager/enemy_manager.tscn" id="4_7an0q"]
+[ext_resource type="PackedScene" uid="uid://dib2y62bkyk4y" path="res://scenes/manager/enemy_manager.tscn" id="4_7an0q"]
 [ext_resource type="PackedScene" uid="uid://bii41db7ajtuk" path="res://scenes/manager/upgrade_manager.tscn" id="5_fqfp2"]
 
 [node name="Main" type="Node"]
