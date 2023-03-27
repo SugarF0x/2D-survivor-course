@@ -3,9 +3,13 @@ extends CharacterBody2D
 @onready var visuals_node: Node2D = $Visuals
 @onready var velocity_component: VelocityComponent = $VelocityComponent
 
+var is_moving = false
+
 
 func _process(delta):
-	velocity_component.accelerate_to_player(self)
+	if is_moving: velocity_component.accelerate_to_player(self)
+	else: velocity_component.decelerate()
+	
 	velocity_component.move(self)
 	flip_visuals_node_towards_movement()
 
@@ -13,3 +17,7 @@ func _process(delta):
 func flip_visuals_node_towards_movement():
 	var x_movement_vector_sign = sign(velocity.x)
 	if x_movement_vector_sign != 0: visuals_node.scale.x = x_movement_vector_sign
+
+
+func set_is_mooving(moving: bool):
+	is_moving = moving
