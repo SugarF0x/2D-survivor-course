@@ -30,6 +30,10 @@ window/size/viewport_height=360
 window/size/mode=2
 window/stretch/mode="viewport"
 
+[gui]
+
+theme/custom="res://resources/theme/theme.tres"
+
 [input]
 
 move_left={
