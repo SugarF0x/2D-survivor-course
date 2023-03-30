@@ -1,27 +1,34 @@
 extends Node
 
-@export var upgrade_pool: Array[AbilityUpgrade]
 @export var experience_manager: Node
 @export var upgrade_screen_scene: PackedScene
 
 var current_upgrades = {}
+var upgrade_pool: WeightedTable = WeightedTable.new()
+
+var upgrade_axe = preload("res://resources/upgrades/axe.tres")
+var upgrade_axe_damage = preload("res://resources/upgrades/axe_damage.tres")
+var upgrade_sword_rate = preload("res://resources/upgrades/sword_rate.tres")
+var upgrade_sword_damage = preload("res://resources/upgrades/sword_damage.tres")
 
 
 func _ready():
 	experience_manager.level_up.connect(on_level_up)
-
+	
+	upgrade_pool.add_item(upgrade_axe, 10)
+	upgrade_pool.add_item(upgrade_sword_rate, 10)
+	upgrade_pool.add_item(upgrade_sword_damage, 10)
 
 
 func pick_upgrades():
 	var chosen_upgrades: Array[AbilityUpgrade] = []
-	var filtered_upgrades = upgrade_pool.duplicate()
 	
-	for i in min(upgrade_pool.size(), 3):
-		var chosen_upgrade = filtered_upgrades.pick_random() as AbilityUpgrade
-		filtered_upgrades = filtered_upgrades.filter(func (upgrade): return upgrade.id != chosen_upgrade.id)
+	for i in min(upgrade_pool.items.size(), 3):
+		var chosen_upgrade = upgrade_pool.pick_item(chosen_upgrades) as AbilityUpgrade
 		chosen_upgrades.append(chosen_upgrade)
 	
 	return chosen_upgrades
+
 
 func apply_upgrade(upgrade: AbilityUpgrade):
 	var has_upgrade = current_upgrades.has(upgrade.id)
@@ -33,12 +40,17 @@ func apply_upgrade(upgrade: AbilityUpgrade):
 	else:
 		current_upgrades[upgrade.id]["quantity"] += 1
 	
+	update_upgrade_pool(upgrade)
+	GameEvents.emit_ability_upgrade_added(upgrade, current_upgrades)
+
+
+func update_upgrade_pool(upgrade: AbilityUpgrade):
 	if upgrade.max_quantity > 0:
 		var current_quantity = current_upgrades[upgrade.id]["quantity"]
-		if current_quantity >= upgrade.max_quantity:
-			upgrade_pool = upgrade_pool.filter(func (upgrade_entry): return upgrade_entry.id != upgrade.id)
+		if current_quantity >= upgrade.max_quantity: upgrade_pool.remove_item(upgrade)
 	
-	GameEvents.emit_ability_upgrade_added(upgrade, current_upgrades)
+	match (upgrade.id):
+		upgrade_axe.id: upgrade_pool.add_item(upgrade_axe_damage, 10)
 
 
 func on_level_up(current_level: int):
