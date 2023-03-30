@@ -6,7 +6,9 @@ const MAX_RANGE = 100
 
 @onready var timer: Timer = $Timer
 
-var damage = 5
+var base_damage = 5
+var damage_multiplier = 1
+
 var base_wait_time
 
 func _ready():
@@ -36,7 +38,7 @@ func on_timer_timeout():
 	var foreground_layer = get_tree().get_first_node_in_group('foreground_layer') as Node2D
 	foreground_layer.add_child(sword_instance)
 	
-	sword_instance.hitbox_component.damage = damage
+	sword_instance.hitbox_component.damage = floori(base_damage * damage_multiplier)
 	
 	sword_instance.global_position = enemies[0].global_position
 	sword_instance.global_position += Vector2.RIGHT.rotated(randf_range(0, TAU)) * 4
@@ -46,8 +48,10 @@ func on_timer_timeout():
 
 
 func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary):
-	if upgrade.id != "sword_rate": return
-	
-	var percent_reduction = current_upgrades["sword_rate"]["quantity"] * .1
-	timer.wait_time = base_wait_time * (1 - percent_reduction)
-	timer.start()
+	match (upgrade.id):
+		"sword_rate":
+			var percent_reduction = current_upgrades["sword_rate"]["quantity"] * .1
+			timer.wait_time = base_wait_time * (1 - percent_reduction)
+			timer.start()
+		"sword_damage":
+			damage_multiplier = 1 + current_upgrades["sword_damage"]["quantity"] * .25
