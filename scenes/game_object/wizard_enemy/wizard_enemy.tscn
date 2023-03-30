@@ -1,10 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://dtdi0i7gnjuxu"]
+[gd_scene load_steps=16 format=3 uid="uid://dtdi0i7gnjuxu"]
 
 [ext_resource type="Script" path="res://scenes/game_object/wizard_enemy/wizard_enemy.gd" id="1_xoibm"]
 [ext_resource type="PackedScene" uid="uid://bn84306o0wkgh" path="res://scenes/component/health_component.tscn" id="2_xuop5"]
 [ext_resource type="PackedScene" uid="uid://bid2040hv2pxf" path="res://scenes/component/velocity_component.tscn" id="3_a35co"]
 [ext_resource type="PackedScene" uid="uid://b15lupvd27gsi" path="res://scenes/component/vial_drop_component.tscn" id="4_2ivvd"]
+[ext_resource type="PackedScene" uid="uid://dorchab6tg5y8" path="res://scenes/component/hit_flash_component.tscn" id="5_lgb7f"]
 [ext_resource type="PackedScene" uid="uid://lv11xxug15oi" path="res://scenes/component/death_component.tscn" id="5_rt030"]
+[ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="6_3ncd7"]
 [ext_resource type="Texture2D" uid="uid://c0b7jw0oa5for" path="res://scenes/game_object/wizard_enemy/wizard_enemy.png" id="6_y6cjy"]
 [ext_resource type="PackedScene" uid="uid://b7c4r48s2rjun" path="res://scenes/component/hurtbox_component.tscn" id="7_skwf6"]
 
@@ -112,6 +114,11 @@ _data = {
 "walk": SubResource("Animation_kynum")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dlhlc"]
+resource_local_to_scene = true
+shader = ExtResource("6_3ncd7")
+shader_parameter/lerp_percent = null
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_ilneo"]
 radius = 8.0
 
@@ -139,6 +146,11 @@ acceleration = 20.0
 [node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_2ivvd")]
 drop_rate = 0.35
 health_component = NodePath("../HealthComponent")
+
+[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_lgb7f")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/Sprite2D")
+hit_flash_material = SubResource("ShaderMaterial_dlhlc")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_rt030")]
 health_component = NodePath("../HealthComponent")
