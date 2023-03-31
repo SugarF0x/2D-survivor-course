@@ -12,10 +12,14 @@ func _ready():
 
 
 func set_ability_upgrades(upgrades: Array[AbilityUpgrade]):
-	for upgrade in upgrades:
+	for upgrade_index in upgrades.size():
+		var upgrade = upgrades[upgrade_index]
 		var card_instance = upgrade_card_scene.instantiate()
+		
 		card_container.add_child(card_instance)
 		card_instance.set_ability_upgrade(upgrade)
+		card_instance.play_in(upgrade_index * .1)
+		
 		card_instance.selected.connect(on_upgrade_selected.bind(upgrade))
 
 
