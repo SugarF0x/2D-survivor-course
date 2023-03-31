@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqk70ttjik52e"]
+[gd_scene load_steps=8 format=3 uid="uid://bqk70ttjik52e"]
 
 [ext_resource type="Script" path="res://scenes/ui/ability_upgrade_card.gd" id="1_bfo7l"]
 
@@ -64,6 +64,44 @@ _data = {
 "in": SubResource("Animation_xftbw")
 }
 
+[sub_resource type="Animation" id="Animation_hi7rv"]
+resource_name = "hover"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.0872665, 0.0872665, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_k1ah6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xbtfb"]
+_data = {
+"RESET": SubResource("Animation_k1ah6"),
+"hover": SubResource("Animation_hi7rv")
+}
+
 [node name="AbilityUpgradeCard" type="PanelContainer"]
 custom_minimum_size = Vector2(150, 150)
 offset_right = 150.0
@@ -76,8 +114,14 @@ libraries = {
 "": SubResource("AnimationLibrary_apesr")
 }
 
+[node name="HoverAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xbtfb")
+}
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 8
@@ -85,6 +129,7 @@ theme_override_constants/margin_bottom = 8
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 8
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
