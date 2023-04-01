@@ -21,7 +21,7 @@ func add_health(value: int):
 	set_health(current_health + value)
 
 
-func apply_damage(number: float):
+func apply_damage(number: int):
 	add_health(-number)
 	Callable(check_death).call_deferred()
 

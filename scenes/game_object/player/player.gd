@@ -55,8 +55,11 @@ func get_movement_vector():
 func process_incoming_damage():
 	if colliding_body_number <= 0: return
 	if not damage_interval_timer.is_stopped(): return
+	
+	var damage = 1
 	damage_interval_timer.start()
-	health_component.apply_damage(1)
+	health_component.apply_damage(damage)
+	GameEvents.emit_player_hit(damage, health_component.current_health)
 
 
 func handle_new_ability_addition(upgrade: AbilityUpgrade):
