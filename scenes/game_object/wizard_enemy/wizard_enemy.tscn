@@ -114,7 +114,7 @@ _data = {
 "walk": SubResource("Animation_kynum")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wgpf8"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3683q"]
 resource_local_to_scene = true
 shader = ExtResource("6_3ncd7")
 shader_parameter/lerp_percent = null
@@ -140,7 +140,7 @@ libraries = {
 max_health = 30
 
 [node name="VelocityComponent" parent="." instance=ExtResource("3_a35co")]
-max_speed = 60
+base_speed = 65
 acceleration = 20.0
 
 [node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_2ivvd")]
@@ -150,7 +150,7 @@ health_component = NodePath("../HealthComponent")
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_lgb7f")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
-hit_flash_material = SubResource("ShaderMaterial_wgpf8")
+hit_flash_material = SubResource("ShaderMaterial_3683q")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_rt030")]
 health_component = NodePath("../HealthComponent")
