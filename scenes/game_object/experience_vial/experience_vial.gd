@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var collision_shape_2d = $Area2D/CollisionShape2D
 @onready var sprite_2d = $Sprite2D
+@onready var random_audio_stream_player_2d_component: RandomAudioStreamPlayer2DComponent = $RandomAudioStreamPlayer2DComponent
 
 
 func _ready():
@@ -21,6 +22,9 @@ func tween_collect(percent: float, start_position: Vector2):
 
 func collect():
 	GameEvents.emit_experience_vial_collected(1)
+	
+	random_audio_stream_player_2d_component.play_random()
+	await random_audio_stream_player_2d_component.finished
 	queue_free()
 
 

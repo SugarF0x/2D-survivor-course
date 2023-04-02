@@ -99,4 +99,6 @@ fixed_fps = 0
 interpolate = false
 
 [node name="RandomAudioStreamPlayer2DComponent" parent="." instance=ExtResource("3_lj1u2")]
+process_mode = 3
+bus = &"Master"
 streams = Array[AudioStream]([ExtResource("4_5jrrr"), ExtResource("5_gnj83"), ExtResource("6_0v5yd"), ExtResource("7_10bo8"), ExtResource("8_rrysh")])

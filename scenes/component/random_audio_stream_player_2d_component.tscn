@@ -4,5 +4,4 @@
 
 [node name="RandomAudioStreamPlayer2DComponent" type="AudioStreamPlayer2D"]
 max_distance = 300.0
-bus = &"sfx"
 script = ExtResource("1_m360x")
