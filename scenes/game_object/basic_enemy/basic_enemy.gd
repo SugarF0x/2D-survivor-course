@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 @onready var visuals_node: Node2D = %Visuals
 @onready var velocity_component: VelocityComponent = %VelocityComponent
-@onready var audio_stream_player_2d = $AudioStreamPlayer2D
 @onready var hurtbox_component = $HurtboxComponent
+@onready var random_audio_stream_player_2d_component: RandomAudioStreamPlayer2DComponent = $RandomAudioStreamPlayer2DComponent
 
 
 func _ready():
@@ -22,4 +22,4 @@ func flip_visuals_node_towards_movement():
 
 
 func on_hit():
-	audio_stream_player_2d.play()
+	random_audio_stream_player_2d_component.play_random()
