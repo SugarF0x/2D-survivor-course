@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var visuals_node = %Visuals as Node2D
 @onready var health_bar = %HealthBar as ProgressBar
 @onready var collision_area = %CollisionArea2D as Area2D
+@onready var hit_audio_stream_component = $HitAudioStreamComponent as RandomAudioStreamPlayer2DComponent
 
 var colliding_body_number = 0
 var move_speed_multiplier = 1
@@ -59,6 +60,7 @@ func process_incoming_damage():
 	var damage = 1
 	damage_interval_timer.start()
 	health_component.apply_damage(damage)
+	hit_audio_stream_component.play_random()
 	GameEvents.emit_player_hit(damage, health_component.current_health)
 
 
