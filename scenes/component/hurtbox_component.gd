@@ -1,6 +1,8 @@
 extends Area2D
 class_name HurtboxComponent
 
+signal hit
+
 @export var health_component: HealthComponent
 
 var floating_text_scene = preload("res://scenes/ui/floating_text.tscn") as PackedScene
@@ -18,7 +20,9 @@ func on_area_entered(area: Area2D):
 	
 	var damage = hitbox_component.damage
 	health_component.apply_damage(damage)
+	
 	spawn_floating_text(damage)
+	hit.emit()
 
 
 func spawn_floating_text(damage: int):
