@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://db1n01vca0je4"]
+[gd_scene load_steps=9 format=3 uid="uid://db1n01vca0je4"]
 
 [ext_resource type="Script" path="res://scenes/ui/end_screen.gd" id="1_3k266"]
+[ext_resource type="AudioStream" uid="uid://c8dj1icprmtkf" path="res://assets/audio/jingles_victory.ogg" id="2_iv83h"]
 [ext_resource type="PackedScene" uid="uid://dx41vbtn8htxd" path="res://scenes/ui/sound_button.tscn" id="2_qi0ne"]
+[ext_resource type="AudioStream" uid="uid://bfdsymfaerfpg" path="res://assets/audio/jingles_defeat.ogg" id="3_kf2f0"]
 
 [sub_resource type="Animation" id="Animation_47j8e"]
 length = 0.001
@@ -62,6 +64,14 @@ _data = {
 [node name="EndScreen" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_3k266")
+
+[node name="VictoryStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_iv83h")
+volume_db = -5.0
+
+[node name="DefeatStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_kf2f0")
+volume_db = -5.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "in"
@@ -131,9 +141,11 @@ vertical_alignment = 1
 layout_mode = 2
 
 [node name="RestartButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("2_qi0ne")]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Restart"
 
 [node name="QuitButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("2_qi0ne")]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Quit"

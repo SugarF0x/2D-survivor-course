@@ -5,6 +5,10 @@ extends CanvasLayer
 @onready var restart_button = %RestartButton as Button
 @onready var quit_button = %QuitButton as Button
 @onready var panel_container = %PanelContainer as PanelContainer
+@onready var victory_stream_player = $VictoryStreamPlayer
+@onready var defeat_stream_player = $DefeatStreamPlayer
+
+var defeat = false
 
 
 func _ready():
@@ -21,8 +25,14 @@ func _ready():
 
 
 func set_defeat():
+	defeat = true
 	title_label.text = 'Defeat'
 	description_label.text = 'You died'
+
+
+func play_jingle():
+	if defeat: defeat_stream_player.play()
+	else: victory_stream_player.play()
 
 
 func on_restart_pressed():
