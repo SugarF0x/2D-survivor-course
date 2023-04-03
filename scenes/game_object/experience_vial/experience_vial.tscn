@@ -17,7 +17,6 @@ script = ExtResource("1_31dn7")
 
 [node name="RandomAudioStreamPlayer2DComponent" parent="." instance=ExtResource("2_b7d3k")]
 process_mode = 3
-bus = &"Master"
 streams = Array[AudioStream]([ExtResource("3_ytt0x"), ExtResource("4_ihlhu"), ExtResource("5_q0pnt"), ExtResource("6_s0hja"), ExtResource("7_tih4q")])
 
 [node name="Area2D" type="Area2D" parent="."]

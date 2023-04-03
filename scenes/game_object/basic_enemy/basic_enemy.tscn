@@ -102,7 +102,7 @@ _data = {
 "walk": SubResource("Animation_r2fmj")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_m71hr"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4m832"]
 resource_local_to_scene = true
 shader = ExtResource("6_gvfcm")
 shader_parameter/lerp_percent = null
@@ -126,7 +126,6 @@ libraries = {
 }
 
 [node name="RandomAudioStreamPlayer2DComponent" parent="." instance=ExtResource("2_u4xmr")]
-bus = &"Master"
 streams = Array[AudioStream]([ExtResource("2_qn0ff"), ExtResource("4_e1llb"), ExtResource("5_w61wb"), ExtResource("6_hbh1p"), ExtResource("7_tfrhi")])
 
 [node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_cukak")]
@@ -141,7 +140,7 @@ unique_name_in_owner = true
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("7_u57q5")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
-hit_flash_material = SubResource("ShaderMaterial_m71hr")
+hit_flash_material = SubResource("ShaderMaterial_4m832")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("4_ynfcm")]
 health_component = NodePath("../HealthComponent")
