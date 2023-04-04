@@ -16,7 +16,7 @@ func on_play_button_pressed():
 
 
 func on_options_button_pressed():
-	pass
+	get_tree().change_scene_to_file("res://scenes/ui/options_menu.tscn")
 
 
 func on_quit_button_pressed():
