@@ -126,6 +126,7 @@ libraries = {
 }
 
 [node name="HitAudioStreamComponent" parent="." instance=ExtResource("2_bnyak")]
+bus = &"sfx"
 streams = Array[AudioStream]([ExtResource("3_0x0ft"), ExtResource("4_bbqw1"), ExtResource("5_a4pvu"), ExtResource("6_twmci"), ExtResource("7_i28o0")])
 
 [node name="VelocityComponent" parent="." instance=ExtResource("2_d7p4e")]

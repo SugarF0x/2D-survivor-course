@@ -210,11 +210,11 @@ script = ExtResource("1_bfo7l")
 
 [node name="HoverPlayerComponent" parent="." instance=ExtResource("2_6yy0o")]
 volume_db = -8.0
-bus = &"Master"
+bus = &"sfx"
 streams = Array[AudioStream]([ExtResource("3_sbtlr"), ExtResource("4_32pw4"), ExtResource("5_rivta"), ExtResource("6_3w5ug"), ExtResource("7_23kmg"), ExtResource("8_gleq8"), ExtResource("9_0gifi"), ExtResource("10_14jpd"), ExtResource("11_767y3"), ExtResource("12_c4lhp")])
 
 [node name="ClickPlayerComponent" parent="." instance=ExtResource("2_6yy0o")]
-bus = &"Master"
+bus = &"sfx"
 streams = Array[AudioStream]([ExtResource("3_sbtlr"), ExtResource("4_32pw4"), ExtResource("5_rivta"), ExtResource("6_3w5ug"), ExtResource("7_23kmg"), ExtResource("8_gleq8"), ExtResource("9_0gifi"), ExtResource("10_14jpd"), ExtResource("11_767y3"), ExtResource("12_c4lhp")])
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

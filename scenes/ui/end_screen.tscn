@@ -68,10 +68,12 @@ script = ExtResource("1_3k266")
 [node name="VictoryStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_iv83h")
 volume_db = -5.0
+bus = &"sfx"
 
 [node name="DefeatStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_kf2f0")
 volume_db = -5.0
+bus = &"sfx"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "in"
