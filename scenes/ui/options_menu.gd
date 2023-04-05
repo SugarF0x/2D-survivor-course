@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+signal back_pressed
+
 @onready var window_mode_button = %WindowModeButton
 @onready var sfxh_slider = %SFXHSlider
 @onready var music_h_slider = %MusicHSlider
@@ -7,8 +9,9 @@ extends CanvasLayer
 
 
 func _ready():
-	window_mode_button.pressed.connect(on_window_mode_button_pressed)
 	back_button.pressed.connect(on_back_button_pressed)
+	
+	window_mode_button.pressed.connect(on_window_mode_button_pressed)
 	
 	sfxh_slider.value_changed.connect(on_audio_slider_value_changed.bind('sfx'))
 	music_h_slider.value_changed.connect(on_audio_slider_value_changed.bind('music'))
@@ -46,5 +49,5 @@ func on_window_mode_button_pressed():
 
 
 func on_back_button_pressed():
-	get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
+	back_pressed.emit()
 
