@@ -20,12 +20,18 @@ func on_play_button_pressed():
 
 
 func on_options_button_pressed():
+	ScreenTransition.transition()
+	await ScreenTransition.transition_halfway
+	
 	var options_instance = options_scene.instantiate()
 	add_child(options_instance)
 	options_instance.back_pressed.connect(on_options_closed.bind(options_instance))
 
 
 func on_options_closed(node: Node):
+	ScreenTransition.transition()
+	await ScreenTransition.transition_halfway
+	
 	node.queue_free()
 
 

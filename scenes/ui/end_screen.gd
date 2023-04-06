@@ -36,6 +36,9 @@ func play_jingle():
 
 
 func on_restart_pressed():
+	ScreenTransition.transition()
+	await ScreenTransition.transition_halfway
+	
 	get_tree().change_scene_to_file("res://scenes/main/main.tscn")
 	get_tree().paused = false
 
