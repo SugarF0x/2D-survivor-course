@@ -15,6 +15,12 @@ func transition():
 	did_emit = false
 
 
+func transition_to_scene(path: String):
+	ScreenTransition.transition()
+	await ScreenTransition.transition_halfway
+	get_tree().change_scene_to_file(path)
+
+
 func emit_halfway():
 	if did_emit: return
 	did_emit = true
