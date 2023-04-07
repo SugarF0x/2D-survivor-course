@@ -2,7 +2,7 @@ extends CanvasLayer
 
 @onready var title_label = %TitleLabel as Label
 @onready var description_label = %DescriptionLabel as Label
-@onready var restart_button = %RestartButton as Button
+@onready var continue_button = %ContinueButton as Button
 @onready var quit_button = %QuitButton as Button
 @onready var panel_container = %PanelContainer as PanelContainer
 @onready var victory_stream_player = $VictoryStreamPlayer
@@ -20,7 +20,7 @@ func _ready():
 		.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 	
 	get_tree().paused = true
-	restart_button.pressed.connect(on_restart_pressed)
+	continue_button.pressed.connect(on_continue_pressed)
 	quit_button.pressed.connect(on_quit_pressed)
 
 
@@ -35,10 +35,13 @@ func play_jingle():
 	else: victory_stream_player.play()
 
 
-func on_restart_pressed():
-	ScreenTransition.transition_to_scene("res://scenes/main/main.tscn")
+func on_continue_pressed():
+	ScreenTransition.transition_to_scene("res://scenes/ui/meta_menu.tscn")
+	await ScreenTransition.transition_halfway
 	get_tree().paused = false
 
 
 func on_quit_pressed():
-	get_tree().quit()
+	ScreenTransition.transition_to_scene("res://scenes/ui/main_menu.tscn")
+	await ScreenTransition.transition_halfway
+	get_tree().paused = false
