@@ -17,13 +17,13 @@ func _ready():
 func update_progress():
 	var currency = MetaProgression.save_data["meta_upgrade_currency"]
 	var percent = min(float(currency) / upgrade.experience_cost, 1)
-	var quantity = MetaProgression.save_data["meta_upgrades"][upgrade.id]["quantity"] if MetaProgression.save_data["meta_upgrades"].has(upgrade.id) else 0
+	var quantity = MetaProgression.get_upgrade_count(upgrade.id)
 	
 	var is_maxed = quantity >= upgrade.max_quantity
 	
-	progress_bar.value = percent
+	progress_bar.value = percent if not is_maxed else 1
 	purchase_button.disabled = percent < 1 || is_maxed
-	progress_label.text = str(currency) + " / " + str(upgrade.experience_cost)
+	progress_label.text = str(currency) + " / " + str(upgrade.experience_cost) if not is_maxed else ""
 	count_label.text = "x%d" % quantity if not is_maxed else "Max"
 
 
