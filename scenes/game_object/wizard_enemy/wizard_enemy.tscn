@@ -120,7 +120,7 @@ _data = {
 "walk": SubResource("Animation_kynum")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5fwmy"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wk3ib"]
 resource_local_to_scene = true
 shader = ExtResource("6_3ncd7")
 shader_parameter/lerp_percent = null
@@ -160,7 +160,7 @@ health_component = NodePath("../HealthComponent")
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_lgb7f")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
-hit_flash_material = SubResource("ShaderMaterial_5fwmy")
+hit_flash_material = SubResource("ShaderMaterial_wk3ib")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_rt030")]
 health_component = NodePath("../HealthComponent")
