@@ -11,9 +11,11 @@ func _ready():
 
 
 func on_died():
+	var adjusted_drop_rate = min(drop_rate * (1 + .1 * MetaProgression.get_upgrade_count("experience_gain")), 1)
+	
 	if vial_scene == null: return
 	if not owner is Node2D: return
-	if randf() > drop_rate: return
+	if randf() > adjusted_drop_rate: return
 	
 	var vial_instance = vial_scene.instantiate() as Node2D
 	var entities_layer = get_tree().get_first_node_in_group('entities_layer') as Node2D
