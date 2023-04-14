@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c4fd2u76m403s"]
+[gd_scene load_steps=16 format=3 uid="uid://c4fd2u76m403s"]
 
 [ext_resource type="Script" path="res://scenes/ui/meta_upgrade_card.gd" id="1_18b18"]
 [ext_resource type="PackedScene" uid="uid://bttri4hljbkay" path="res://scenes/component/random_stream_player_component.tscn" id="2_15cn1"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://bv3kqx4ybu3hg" path="res://assets/audio/switch9.ogg" id="11_esgkj"]
 [ext_resource type="AudioStream" uid="uid://ch50ecdvecsh4" path="res://assets/audio/switch10.ogg" id="12_6ohxm"]
 [ext_resource type="Texture2D" uid="uid://b58pd6itrerbo" path="res://scenes/game_object/experience_vial/experience_vial.png" id="13_kprea"]
+[ext_resource type="PackedScene" uid="uid://dx41vbtn8htxd" path="res://scenes/ui/sound_button.tscn" id="14_npjr2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b5eqe"]
 content_margin_left = 4.0
@@ -129,7 +130,7 @@ size_flags_vertical = 0
 mouse_filter = 2
 texture = ExtResource("13_kprea")
 
-[node name="PurchaseButton" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="PurchaseButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("14_npjr2")]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Purchase"

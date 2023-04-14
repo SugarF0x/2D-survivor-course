@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@export var arena_time_manager: Node
+
 @onready var animation_player = $AnimationPlayer as AnimationPlayer
 @onready var health_component = %HealthComponent as HealthComponent
 @onready var abilities_node = %Abilities as Node
@@ -15,6 +17,7 @@ var move_speed_multiplier = 1
 
 
 func _ready():
+	arena_time_manager.arena_difficulty_increased.connect(on_arena_difficulty_increased)
 	collision_area.body_entered.connect(on_body_entered)
 	collision_area.body_exited.connect(on_body_exited)
 	damage_interval_timer.timeout.connect(process_incoming_damage)
@@ -83,7 +86,7 @@ func on_body_exited(body: Node2D):
 	colliding_body_number -= 1
 
 
-func on_health_changed(health: int):
+func on_health_changed(health: int, delta: int):
 	update_health_display()
 
 
@@ -92,3 +95,11 @@ func on_ability_upgrade_added(upgrade: AbilityUpgrade, all_upgrades: Dictionary)
 	
 	match (upgrade.id):
 		"player_speed": handle_speed_upgrade(all_upgrades["player_speed"]["quantity"])
+
+
+func on_arena_difficulty_increased(arena_difficulty: int):
+	var health_regeneration_quantity = MetaProgression.get_upgrade_count("regeneration")
+	if health_regeneration_quantity == 0: return
+	
+	var is_30_second_interval = arena_difficulty % 6 == 0
+	if is_30_second_interval: health_component.add_health(health_regeneration_quantity)
