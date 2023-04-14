@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dctuvs2iige5u"]
+[gd_scene load_steps=19 format=3 uid="uid://dctuvs2iige5u"]
 
 [ext_resource type="Texture2D" uid="uid://bsouiyk8ngs1k" path="res://scenes/game_object/player/player.png" id="1_80v7p"]
 [ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_bcfxh"]
@@ -11,7 +11,6 @@
 [ext_resource type="AudioStream" uid="uid://b2snnxbtrpk44" path="res://assets/audio/impactMining_002.ogg" id="5_a4pvu"]
 [ext_resource type="AudioStream" uid="uid://cjvlbjwhc37lu" path="res://assets/audio/impactMining_003.ogg" id="6_twmci"]
 [ext_resource type="AudioStream" uid="uid://ca16loc10nwgm" path="res://assets/audio/impactMining_004.ogg" id="7_i28o0"]
-[ext_resource type="PackedScene" uid="uid://x0oi8ackcyqm" path="res://scenes/ability/anvil_ability_controller/anvil_ability_controller.tscn" id="11_08gty"]
 
 [sub_resource type="Animation" id="Animation_by5lf"]
 length = 0.001
@@ -141,8 +140,6 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="SwordAbilityController" parent="Abilities" instance=ExtResource("2_flk71")]
-
-[node name="AnvilAbilityController" parent="Abilities" instance=ExtResource("11_08gty")]
 
 [node name="DamageIntervalTimer" type="Timer" parent="."]
 unique_name_in_owner = true
