@@ -47,7 +47,9 @@ func flip_visuals_node_towards_movement(movement_vector: Vector2):
 
 
 func update_health_display():
-	health_bar.value = health_component.get_health_percent()
+	var ass = health_component.get_health_percent()
+	print(ass)
+	health_bar.value = ass
 
 
 func get_movement_vector():
@@ -101,5 +103,5 @@ func on_arena_difficulty_increased(arena_difficulty: int):
 	var health_regeneration_quantity = MetaProgression.get_upgrade_count("regeneration")
 	if health_regeneration_quantity == 0: return
 	
-	var is_30_second_interval = arena_difficulty % 6 == 0
+	var is_30_second_interval = arena_difficulty % 1 == 0
 	if is_30_second_interval: health_component.add_health(health_regeneration_quantity)

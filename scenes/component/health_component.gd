@@ -16,8 +16,9 @@ func set_health(value: int):
 	var new_value = clamp(value, 0, max_health)
 	if new_value == current_health: return
 	
-	health_changed.emit(new_value, value - current_health)
+	var delta = value - current_health
 	current_health = new_value
+	health_changed.emit(current_health, delta)
 
 
 func add_health(value: int):
